@@ -23,14 +23,13 @@ Build an email notification system that allows users to send themselves a summar
 - [ ] The button shows a loading state while the email is being sent
 - [ ] The user receives feedback (success or error message) after clicking
 
-### Email Content
+### Email API Integration
 
-- [ ] Email has a clear subject line (e.g., "Your Credit Health Score Summary")
-- [ ] Email body includes the user's current scores
-- [ ] Email includes a call-to-action link to view the dashboard
-- [ ] Email has a professional, informative tone depending on the score
-
-### Integration
-
-- [ ] The system connects to the email provider via HTTP API
+- [ ] Request payload includes all required parameters: to, templateId, dynamicData
+- [ ]  dynamicData object contains all values needed by the template (score, dashboard URL)
+- [ ] Correct templateId is selected based on score range (e.g., low/medium/high)
 - [ ] Email provider failures are handled gracefully (logged, not crashing the app)
+
+### Nice to have
+- [ ] Transient failures trigger retry with backoff
+- [ ] Request includes idempotency key to prevent duplicate sends
